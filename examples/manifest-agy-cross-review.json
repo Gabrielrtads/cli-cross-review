@@ -1,0 +1,26 @@
+[
+  {
+    "id": "agy_builder",
+    "engine": "agy",
+    "mode": "plan",
+    "model": "gemini-4-argon",
+    "effort": "high",
+    "prompt": "[PAPEL: BUILDER / ULTRA THINK FASE 1 & 2] Tema: Arquitetura de cache resiliente no Supabase com Redis. 1. Mapeie premissas. 2. Formule o Trio de Solucoes (Minimalista, Convencional, Robusta)."
+  },
+  {
+    "id": "agy_redteam",
+    "engine": "agy",
+    "mode": "plan",
+    "model": "claude-opus-5.5",
+    "effort": "high",
+    "prompt": "[PAPEL: RED TEAM / ULTRA THINK FASE 3] Tema: Arquitetura de cache resiliente no Supabase com Redis. Ataque impiedoso procurando race conditions, memory leaks, custos e pontos unicos de falha."
+  },
+  {
+    "id": "agy_referee",
+    "engine": "agy",
+    "mode": "plan",
+    "model": "gemini-3.8-flash-high",
+    "effort": "high",
+    "prompt": "[PAPEL: REFEREE & AUDITOR / ULTRA THINK FASE 4] Tema: Arquitetura de cache resiliente no Supabase com Redis. Pondere trade-offs segundo AGENTS.md e forneca CONFIDENCE SCORE (0-100%)."
+  }
+]

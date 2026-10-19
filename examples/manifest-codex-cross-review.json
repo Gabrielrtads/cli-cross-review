@@ -1,0 +1,26 @@
+[
+  {
+    "id": "codex_builder",
+    "engine": "codex",
+    "mode": "plan",
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "prompt": "[PAPEL: BUILDER / ULTRA THINK FASE 1 & 2] Tema: Idempotencia transacional de webhooks Asaas com leasing e advisory locks no Postgres. 1. Mapeie premissas. 2. Formule o Trio de Solucoes."
+  },
+  {
+    "id": "codex_redteam",
+    "engine": "codex",
+    "mode": "plan",
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "prompt": "[PAPEL: RED TEAM / ULTRA THINK FASE 3] Tema: Idempotencia transacional de webhooks Asaas com leasing e advisory locks no Postgres. Ataque matematico/logico procurando deadlocks, starvation e double-spending."
+  },
+  {
+    "id": "codex_referee",
+    "engine": "codex",
+    "mode": "plan",
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "prompt": "[PAPEL: REFEREE & AUDITOR / ULTRA THINK FASE 4] Tema: Idempotencia transacional de webhooks Asaas com leasing e advisory locks no Postgres. Pondere conformidade com banco de producao e forneca CONFIDENCE SCORE (0-100%)."
+  }
+]

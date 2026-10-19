@@ -1,0 +1,26 @@
+[
+  {
+    "id": "claude_builder",
+    "engine": "claude",
+    "mode": "plan",
+    "model": "sonnet-5",
+    "effort": "high",
+    "prompt": "[PAPEL: BUILDER / ULTRA THINK FASE 1 & 2] Tema: Refatoracao de componente Drawer e sincronizacao de estado na Agenda. 1. Mapeie premissas. 2. Formule o Trio de Solucoes (Minimalista, Convencional, Robusta)."
+  },
+  {
+    "id": "claude_redteam",
+    "engine": "claude",
+    "mode": "plan",
+    "model": "opus-5",
+    "effort": "high",
+    "prompt": "[PAPEL: RED TEAM / ULTRA THINK FASE 3] Tema: Refatoracao de componente Drawer e sincronizacao de estado na Agenda. Ataque impiedoso procurando memory leaks no React, quebra de acessibilidade e regressoes visuais."
+  },
+  {
+    "id": "claude_referee",
+    "engine": "claude",
+    "mode": "plan",
+    "model": "haiku-4.5",
+    "effort": "medium",
+    "prompt": "[PAPEL: REFEREE & AUDITOR / ULTRA THINK FASE 4] Tema: Refatoracao de componente Drawer e sincronizacao de estado na Agenda. Pondere UX, simplicidade de codigo e forneca CONFIDENCE SCORE (0-100%)."
+  }
+]
