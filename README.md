@@ -4,9 +4,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![Zero-Dependency](https://img.shields.io/badge/Dependencies-Zero-emerald?style=for-the-badge)](#)
 [![Mode](https://img.shields.io/badge/Mode-Strictly_Read--Only_Plan-purple?style=for-the-badge)](#)
+[![Cost-Smart](https://img.shields.io/badge/Architecture-Cost--Smart_Tiers-10b981?style=for-the-badge)](#)
 
 > **Eliminate AI Confirmation Bias (Sycophancy) in your terminal.**  
-> Turn your **Claude Code**, **OpenAI Codex**, or **Antigravity CLI** into a concurrent, 3-model adversarial court before writing code.
+> Turn your **Claude Code**, **OpenAI Codex**, or **Antigravity CLI (Gemini)** into a concurrent, 3-model adversarial court before writing code.
 
 ---
 
@@ -37,6 +38,21 @@ Traditional multi-agent frameworks (CrewAI, AutoGen) attempt to solve this, but 
 1. **Model A — Builder (`Solution Generator`):** Formulates 3 competing architectural approaches.
 2. **Model B — Red Team (`Adversarial Stress-Tester`):** Receives an isolated, hostile system prompt. Hunts for race conditions, deadlocks, hidden quota limits, and memory leaks.
 3. **Model C — Referee (`Consensus & Rules Auditor`):** Compares the proposal with the attacks, verifies rule adherence, and issues a final recommendation with a **Confidence Score (0-100%)**. *(If < 85%, flags a Critical Failure).*
+
+---
+
+## 💰 Cost-Smart Review Strategy (Save 85%+ on AI Token Consumption)
+
+Why burn expensive frontier models like Claude Opus or Codex Astra on everyday layout tweaks or simple refactorings?
+
+`cli-cross-review` allows you to calibrate reviews based on the actual financial or systemic risk of the code:
+
+1. **Daily High-Volume Audits (Ultra-Low Cost / Free Tier):**
+   - Use **`agy` (Antigravity / Gemini Flash)** or `--low`: Runs 3 concurrent instances with massive quotas at sub-2s speed. Ideal for PR sanity checks, doc reviews, and CSS audits without burning paid token balances.
+2. **Standard Product Logic (Smart Balanced Default):**
+   - Use **`codex`** or **`claude`** with default `--auto`: Two mirrored senior instances duel against each other (one proposes, one attacks) before consulting a referee, giving you elite code quality without burning your highest-tier subscription limits.
+3. **Mission-Critical & High-Stakes (Frontier Escalate):**
+   - For payment webhooks, database migrations, and authentication flows, pass `--high` to unleash top-tier frontier red-teaming (**Claude Opus** or **Codex Astra**).
 
 ---
 
@@ -88,7 +104,7 @@ You can explicitly force an effort tier whenever needed:
 
 * **Econômico / Fast (`--low`):**
   ```text
-  /cli-cross-review claude --low "Review Tailwind CSS layout for mobile screens below 380px"
+  /cli-cross-review agy --low "Review Tailwind CSS layout for mobile screens below 380px"
   ```
 * **Engenharia Padrão (`--medium`):**
   ```text
@@ -96,7 +112,7 @@ You can explicitly force an effort tier whenever needed:
   ```
 * **Segurança Máxima (`--high`):**
   ```text
-  /cli-cross-review codex --high "Review Supabase RLS multitenant isolation and atomic refund transaction"
+  /cli-cross-review claude --high "Review Supabase RLS multitenant isolation and atomic refund transaction"
   ```
 
 ---
@@ -114,10 +130,10 @@ You can explicitly force an effort tier whenever needed:
 ### O que é o `cli-cross-review`?
 É uma skill de terminal que executa uma **revisão cruzada adversarial entre 3 modelos da mesma CLI** (`claude`, `codex` ou `agy`). Ela elimina o viés de auto-confirmação (*sycophancy*) sem quebrar o isolamento do seu repositório e sem gastar cotas de múltiplos provedores ao mesmo tempo.
 
-### Destaques:
-- **Modo `--auto`:** Analisa seu prompt e escolhe `low` para CSS/documentação, `high` para banco de dados/segurança/pagamentos, e `medium` para regras de negócio.
-- **Instâncias Espelhadas:** No modo padrão (`medium`), dois processos do modelo sênior duelam entre si (um propõe, o outro ataca com prompt agressivo), poupando suas cotas nobres de Opus e Astra.
-- **100% Compatível com Claude Pro:** Sem referências a modelos fora do plano Pro.
+### 💰 Estratégia Custo-Inteligente (Economize 85%+ em Tokens):
+- **Varredura em Massa Custo Zero:** Usar `agy` (Antigravity / Gemini Flash) ou a flag `--low` roda 3 processos concorrentes com resposta em sub-2s e cotas gratuitas/baratas, ideal para checar formatação, layout e sanidade de commits.
+- **Modelos Espelhados no Dia a Dia:** No modo padrão (`medium`), dois processos do modelo sênior duelam entre si (um propõe, o outro ataca com prompt agressivo), poupando suas cotas nobres de Opus e Astra.
+- **Escalada de Fronteira no Risco:** Deixe os modelos mais caros e inteligentes (Opus no Claude, Astra no Codex) exclusivamente para quando passar `--high` ou quando o código envolver pagamentos, RLS e segurança crítica.
 
 ---
 
