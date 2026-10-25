@@ -6,6 +6,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![Zero Mutation](https://img.shields.io/badge/Modo-100%25_Read--Only-emerald?style=for-the-badge)](#)
 [![Vibe Coding Ready](https://img.shields.io/badge/Vibe_Coding-Zero_Config-ff0055?style=for-the-badge)](#)
+[![CI & Test Suite](https://github.com/Gabrielrtads/cli-cross-review/actions/workflows/ci.yml/badge.svg)](https://github.com/Gabrielrtads/cli-cross-review/actions)
+[![GitHub stars](https://img.shields.io/github/stars/Gabrielrtads/cli-cross-review?style=social)](https://github.com/Gabrielrtads/cli-cross-review/stargazers)
 
 ---
 

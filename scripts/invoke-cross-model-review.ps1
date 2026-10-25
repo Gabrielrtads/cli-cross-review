@@ -364,3 +364,4 @@ Write-Output $acusacaoOutput
 Write-Output ""
 Write-Output "---"
 Write-Output "⚖️ *Sessão encerrada pelo Tribunal. Nenhum arquivo foi modificado no disco sem sua ordem expressa.*"
+Write-Output "⭐ *Se este julgamento salvou seu projeto de falhas, deixe uma estrela no GitHub: https://github.com/Gabrielrtads/cli-cross-review*"
