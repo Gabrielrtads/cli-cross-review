@@ -1,8 +1,8 @@
 ---
 name: stf-ia
-description: STF da IA (Supreme Terminal Framework). Corte suprema de julgamento e decisão adversarial multi-modelo (2 rodadas: Defesa vs Acusação -> Magistrado). Julga código, arquitetura, estratégias de negócios, precificação, copywriting e decisões críticas sem complacência. Ative ao dizer '/stf', '/stf-ia', '/tribunal' ou 'julgar caso'.
+description: Adversarial multi-model cross-review court (2 rounds: Defense vs Prosecution -> Magistrate). Eliminates AI sycophancy, stress-tests architecture, and delivers decisive verdicts on code, business, or PRs. / STF da IA: Corte Suprema de revisão adversarial no terminal. Use when you need a second opinion, stress testing, adversarial review, or invoke with '/stf', '/stf-ia', '/tribunal', 'julgar caso'.
 category: devops
-tags: [stf, stf-ia, tribunal, cross-review, ultra-think, adversarial, multi-model, multi-cli, decision-making]
+tags: [stf, stf-ia, tribunal, cross-review, adversarial, multi-model, second-opinion, code-review, sycophancy, decision-making, ultra-think]
 ---
 
 # 🏛️ STF-IA: O Tribunal da IA (`/stf` | `/tribunal`)
