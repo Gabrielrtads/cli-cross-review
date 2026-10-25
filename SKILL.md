@@ -1,74 +1,73 @@
 ---
-name: stf-review
-description: Adversarial multi-model cross-review court (2 rounds: Defense vs Prosecution -> Magistrate). Eliminates AI sycophancy, stress-tests architecture, and delivers decisive verdicts on code, business, or PRs. / STF Review: Corte Suprema de revisão adversarial no terminal. Use when you need a second opinion, stress testing, adversarial review, or invoke with '/stf', '/stf-review', '/tribunal', 'julgar caso'.
+name: sta
+description: Adversarial multi-model cross-review court (2 rounds: Defense vs Prosecution -> Magistrate). Eliminates AI sycophancy, stress-tests architecture, and delivers decisive verdicts on code, business, or PRs. / STA: Supremo Tribunal dos Agentes. A Corte Suprema de revisão adversarial no terminal. Use when you need a second opinion, stress testing, adversarial review, or invoke with '/sta', 'julgar caso'.
 category: devops
-tags: [stf, stf-review, tribunal, cross-review, adversarial, multi-model, second-opinion, code-review, sycophancy, decision-making, ultra-think]
+tags: [sta, ai-court, supreme-tribunal, cross-review, adversarial, multi-model, second-opinion, code-review, sycophancy, decision-making, ultra-think]
 ---
 
-# 🏛️ STF-Review: O Tribunal da IA (`/stf` | `/tribunal`)
-> **A Primeira Corte Suprema de Inteligência Artificial no seu Terminal.**  
-> *(Supreme Terminal Framework / Supremo Tribunal Frontend)*  
+# 🏛️ STA: Supremo Tribunal dos Agentes (`/sta`)
+> **A Corte Suprema de Inteligência Artificial no seu Terminal.**  
+> *(Supreme Tribunal of Agents)*  
 > Elimine o vício das IAs que dizem "sim" para tudo. Submeta qualquer código, ideia de negócio, roteiro ou decisão crítica a 3 modelos concorrentes em julgamento dialético real em 2 rodadas.
 
 ---
 
 ## ⚡ Como Invocar (100% Vibe Coding)
 
-Sem menus chatos nem flags obrigatórias. O STF detecta o ambiente e a matéria automaticamente:
+Sem menus chatos nem flags obrigatórias. O STA detecta o ambiente e a matéria automaticamente:
 
 ```text
-/stf <caso, pergunta, código ou decisão>
+/sta <caso, pergunta, código ou decisão>
 ```
-*(Também aceita `/tribunal` ou `/stf-ia`)*
 
 ### Exemplos do Dia a Dia:
 
 1. **Julgamento de Código ou Arquitetura:**
    ```text
-   /stf "Criei este webhook de pagamento com retry no Redis. O que vai quebrar sob pico?"
-   /stf --diff                       # Julga automaticamente as alterações do git diff
-   /stf --staged                     # Julga o que está staged para commit
-   /stf --file src/auth.ts           # Julga um arquivo específico
+   /sta "Criei este webhook de pagamento com retry no Redis. O que vai quebrar sob pico?"
+   /sta --diff                       # Julga automaticamente as alterações do git diff
+   /sta --staged                     # Julga o que está staged para commit
+   /sta --file src/auth.ts           # Julga um arquivo específico
    ```
 
 2. **Julgamento de Negócio, Pricing & SaaS:**
    ```text
-   /stf "Devo cobrar R$ 97 fixo ou 3% por agendamento no Barber.fi?"
+   /sta "Devo cobrar R$ 97 fixo ou 3% por agendamento no Barber.fi?"
    ```
 
 3. **Julgamento Criativo, Roteiro & Vídeo:**
    ```text
-   /stf "Esse gancho dos 3 segundos para Reels tem retenção ou vai flopar?"
+   /sta "Esse gancho dos 3 segundos para Reels tem retenção ou vai flopar?"
    ```
 
 4. **Modo "Corte Marcial" (Auditoria Implacável):**
    ```text
-   /stf --fogo "Revise a migração do banco de dados de produção antes do deploy"
+   /sta --fogo "Revise a migração do banco de dados de produção antes do deploy"
    ```
-   *(Sinônimos: `--fogo`, `--hard`, `--corte-marcial`, `--xandao`). Convocação dos modelos de fronteira máxima (Opus, Astra, Gemini Argon).*
+   *(Sinônimos: `--fogo`, `--hard`, `--corte-marcial`). Convocação dos modelos de fronteira máxima (Opus, Astra, Gemini Argon).*
 
 5. **Modo Piada / Sessão Plenária da TV Justiça (`--zoeira`, `--brasil`, `--meme`, `--plenario`):**
    ```text
-   /stf --zoeira "Dá uma olhada nesse webhook de cobrança que fiz correndo"
-   /stf --brasil "Esse refactor passa no STF ou vai tomar multa diária?"
+   /sta --zoeira "Dá uma olhada nesse webhook de cobrança que fiz correndo"
+   /sta --brasil "Esse refactor passa no STA ou vai tomar multa de 50 mil tokens?"
    ```
    *(Emite a ata de julgamento com a bancada dos ministros, pedidos de vista e debates inflamados, entregando no final o Patch Git sério e corrigido).*
 
 6. **Override Manual de CLI (Opcional):**
    ```text
-   /stf agy "Meu plano de contingência para a VPS"
-   /stf claude "Refatoração do motor de busca FTS5"
-   /stf codex "Otimização de queries SQL"
+   /sta agy "Meu plano de contingência para a VPS"
+   /sta claude "Refatoração do motor de busca FTS5"
+   /sta codex "Otimização de queries SQL"
    ```
 
 ---
 
 ## 🏛️ A Dinâmica da Corte: 3 Poderes em 2 Rodadas
 
-Diferente de ferramentas que apenas colam três respostas no vácuo, o STF-IA opera em **2 rodadas causais com barreira de sincronização**:
+Diferente de ferramentas que apenas colam três respostas no vácuo, o STA opera em **2 rodadas causais com barreira de sincronização**:
 
 ```
-                       [O CASO SUBMETIDO AO TRIBUNAL]
+                       [O CASO SUBMETIDO AO STA]
                                      │
            ┌─────────────────────────┴─────────────────────────┐
            ▼                                                   ▼
@@ -95,7 +94,7 @@ Diferente de ferramentas que apenas colam três respostas no vácuo, o STF-IA op
 
 ## 🧭 As 4 Varas Judiciais (Auto-Detecção de Matéria)
 
-O STF-IA identifica a matéria do caso automaticamente:
+O STA identifica a matéria do caso automaticamente:
 - **1ª Vara de Crimes e Arquitetura de Código:** Foco em bugs, memory leaks, concorrência, OWASP e entrega de **Patch Git**.
 - **2ª Vara Cível de Negócios & SaaS:** Foco em unit economics, churn, riscos de caixa e **Plano de Ação em 3 etapas**.
 - **3ª Vara Especial de Conteúdo & Retenção:** Foco no gancho dos 3s, mecânica neurológica de retenção e **Cópias A/B reescritas**.
@@ -109,7 +108,7 @@ O STF-IA identifica a matéria do caso automaticamente:
 |---|---|---|---|
 | **`--low`** | `--low`, `--rapido`, `--leve` | `flash-low` (3x) | Bate-pronto em ~2 segundos. |
 | **`--medium`** | Padrão / `--medium` | `flash-high` (2x) + `flash-medium` | Julgamento aprofundado com caça a premissas. |
-| **`--high`** | `--high`, `--fogo`, `--corte-marcial`, `--xandao` | `gemini-4-argon` + `claude-opus` + `flash-high` | Batalha de fronteira máxima para decisões críticas. |
+| **`--high`** | `--high`, `--fogo`, `--corte-marcial` | `gemini-4-argon` + `claude-opus` + `flash-high` | Batalha de fronteira máxima para decisões críticas. |
 | **`--auto`** | Padrão inteligente | Triagem automática por palavras-chave | 100% Vibe Coding sem intervenção do usuário. |
 
 ---
@@ -117,7 +116,7 @@ O STF-IA identifica a matéria do caso automaticamente:
 ## 📜 Formato da Sentença Judicial
 
 ```markdown
-# 🏛️ STF-IA: SENTENÇA JUDICIAL
+# 🏛️ STA: SENTENÇA JUDICIAL
 > **Jurisdição:** 1ª Vara de Crimes e Arquitetura de Código
 > **Corte:** agy | **Nível de Esforço:** auto -> high | **Duração:** 3.8s | **Regime:** 100% Read-Only
 
@@ -125,7 +124,7 @@ O STF-IA identifica a matéria do caso automaticamente:
 
 ## ⚖️ AUTOS DO JULGAMENTO (SENTENÇA DO MAGISTRADO)
 
-# 🟢 [APROVADO COM RESSALVAS]
+# 🟢 [APROVADO PELO STA]
 GRAU DE CERTEZA DA CORTE: [ ████████░░ ] 85%
 
 > **A Sentença em Uma Frase:**
@@ -135,11 +134,3 @@ GRAU DE CERTEZA DA CORTE: [ ████████░░ ] 85%
 1. Aplique a cláusula 'NOWAIT' ou 'TIMEOUT 2000' na query de seleção.
 2. Mantenha o webhook idempotente gravando o hash no Redis.
 ```
-
----
-
-## 🔄 Retrocompatibilidade e Invocadores
-Invocadores oficiais e legados funcionam de forma intercambiável:
-- `/stf` e `/stf-ia` $\rightarrow$ Invocação direta da Corte STF-IA
-- `/tribunal` $\rightarrow$ Invocação padrão da Corte
-- `/cli-cross-review` e `/cli-revisao-cruzada` $\rightarrow$ Aliases legados preservados
