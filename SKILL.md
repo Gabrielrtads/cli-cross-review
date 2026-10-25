@@ -60,6 +60,12 @@ Sem menus chatos nem flags obrigatórias. O STA detecta o ambiente e a matéria 
    /sta codex "Otimização de queries SQL"
    ```
 
+7. **Modo Cross-Empresas / Duelo Multi-Vendor (`--cross-cli`):**
+   ```text
+   /sta --cross-cli "Revisão de segurança da API com Claude na Defesa, Codex no Ataque e Gemini no Juiz"
+   ```
+   *(Cruza modelos de empresas concorrentes para eliminar pontos cegos compartilhados).*
+
 ---
 
 ## 🏛️ A Dinâmica da Corte: 3 Poderes em 2 Rodadas

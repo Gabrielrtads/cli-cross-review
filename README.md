@@ -58,6 +58,29 @@ flowchart TD
 
 ---
 
+## 🌐 3 Modos de Julgamento: Da Mesma Empresa ou Cross-Big Techs
+
+O **STA** é a primeira corte agêntica agnóstica de fornecedor. Você escolhe se o julgamento corre dentro de um único ecossistema ou se coloca as Big Techs para duelarem entre si:
+
+### 1. Julgamento Cross-Big Techs (Duelo Multi-Empresas) ⚔️
+Elimine o viés de família! Modelos da mesma empresa compartilham os mesmos dados de treino e pontos cegos. No modo cross, IAs concorrentes se fiscalizam:
+- 🛡️ **Defesa:** Anthropic (Claude Sonnet / Opus)
+- 🔥 **Acusação (Red Team):** OpenAI (GPT-6 Sol / Astra)
+- 👑 **Magistrado (Juiz):** Google (Gemini Argon / Pro)
+
+### 2. Julgamento Intra-Empresa (Econômico e Homogêneo) 🏢
+Se você ou sua empresa possuem créditos de apenas um provedor, o STA convoca a corte escalando pesos diferentes da mesma casa:
+- **Só Google:** Defesa (Flash-High) vs Acusação (Argon-High) ➔ Juiz (Flash)
+- **Só Anthropic:** Defesa (Sonnet-5) vs Acusação (Opus-5) ➔ Juiz (Haiku)
+- **Só OpenAI:** Defesa (GPT-6.1 Sol) vs Acusação (GPT-6 Astra) ➔ Juiz (Luna)
+
+### 3. Em Equipes e CI/CD Corporativo 🤝
+O STA pode ser instalado como portão de qualidade (`quality gate`) em times de desenvolvimento:
+- **No Terminal dos Devs:** O Dev A (no Cursor) e o Dev B (no Claude Code) usam `/sta` com as mesmas réguas de auditoria.
+- **No GitHub Actions (CI/CD):** Bloqueia automaticamente o merge de Pull Requests se o Magistrado emitir `[DECISÃO MONOCRÁTICA]`.
+
+---
+
 ## 🎚️ Escala de Gravidade dos Laudos (Tiers de Severidade)
 
 O **STA** prioriza a **utilidade técnica imediata**. A análise é limpa, cirúrgica e sem rodeios para não atrapalhar seu fluxo de desenvolvimento:
@@ -122,6 +145,12 @@ Para ver a ata completa com a bancada dos ministros, sustentação oral e debate
 # Sinônimos aceitos: --zoeira, --brasil, --meme, --plenario
 ```
 *(Entrega o debate descontraído da corte sem perder a seriedade técnica: o Patch Git corrigido vem anexado no final).*
+
+### 6. Modo "Cross-Empresas" (Duelo Google vs Anthropic vs OpenAI)
+Para convocar um tribunal misto confrontando modelos concorrentes:
+```text
+/sta --cross-cli "Auditoria crítica de arquitetura antes de ir para produção"
+```
 
 ---
 
