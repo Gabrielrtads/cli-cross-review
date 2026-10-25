@@ -47,7 +47,14 @@ Sem menus chatos nem flags obrigatórias. O STF detecta o ambiente e a matéria 
    ```
    *(Sinônimos: `--fogo`, `--hard`, `--corte-marcial`, `--xandao`). Convocação dos modelos de fronteira máxima (Opus, Astra, Gemini Argon).*
 
-5. **Override Manual de CLI (Opcional):**
+5. **Modo Piada / Sessão Plenária da TV Justiça (`--zoeira`, `--brasil`, `--meme`, `--plenario`):**
+   ```text
+   /stf --zoeira "Dá uma olhada nesse webhook de cobrança que fiz correndo"
+   /stf --brasil "Esse refactor passa no STF ou vai tomar multa diária?"
+   ```
+   *(Emite a ata de julgamento com a bancada dos ministros, pedidos de vista e debates inflamados, entregando no final o Patch Git sério e corrigido).*
+
+6. **Override Manual de CLI (Opcional):**
    ```text
    /stf agy "Meu plano de contingência para a VPS"
    /stf claude "Refatoração do motor de busca FTS5"

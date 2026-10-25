@@ -115,11 +115,13 @@ Para quando você precisa que o modelo use 100% da sua força bruta de raciocín
 # Sinônimos aceitos: --fogo, --hard, --corte-marcial, --xandao
 ```
 
-### 5. Modo "Plenário" (Debate Completo dos Modelos)
-Para ver as sustentações da Defesa e da Acusação na íntegra antes da decisão:
+### 5. Modo "Plenário / TV Justiça" (Modo Zoeira Opcional)
+Para ver a ata completa com a bancada dos ministros, sustentação oral e votos divergentes:
 ```text
-/stf --plenario "Análise arquitetural da nossa transição para micro-serviços"
+/stf --zoeira "Webhook de cobrança sem idempotência rodando em loop"
+# Sinônimos aceitos: --zoeira, --brasil, --meme, --plenario
 ```
+*(Entrega o debate descontraído da corte sem perder a seriedade técnica: o Patch Git corrigido vem anexado no final).*
 
 ---
 
