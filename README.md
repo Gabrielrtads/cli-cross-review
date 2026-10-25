@@ -24,7 +24,7 @@ Quando você pergunta para o ChatGPT, Claude ou Gemini:
 
 ## 🏛️ A Solução: Instanciar uma Corte Implacável em 2 Rodadas
 
-O **STF-IA / Tribunal** não faz elogios. Ele pega o seu caso e instancia **3 modelos em 2 rodadas reais com barreira de sincronização**:
+O **STF-IA / Tribunal** não faz elogios vazios. Ele pega o seu caso e instancia **3 modelos em 2 rodadas reais com barreira de sincronização**:
 
 ```mermaid
 flowchart TD
@@ -58,6 +58,19 @@ flowchart TD
 
 ---
 
+## 🎚️ Escala de Gravidade dos Laudos (Tiers de Severidade)
+
+O **STF-IA** prioriza a **utilidade técnica imediata**. A análise é limpa, cirúrgica e sem rodeios para não atrapalhar seu fluxo de desenvolvimento:
+
+| Nível | Status Técnico | Carimbo Oficial | Entrega do Laudo |
+|:---:|---|---|---|
+| 🟢 | **Sólido & Seguro** | `🟢 [APROVADO PELO PLENÁRIO]` | Validação de estabilidade e boas práticas recomendadas. |
+| 🟡 | **Débito Técnico Leve** | `🟡 [HABEAS CORPUS CONCEDIDO]` | Liberação provisória com lista pontual de melhorias antes do merge. |
+| 🟠 | **Risco de Concorrência/Deadlock** | `🟠 [PEDIDO DE VISTA / RETENÇÃO]` | Plano de ação em 3 etapas para blindar transações e filas. |
+| 🔴 | **Crítico / Sem Lastro** | `🔴 [DECISÃO MONOCRÁTICA]` | Bloqueio imediato + **Patch Git** pronto para aplicar. |
+
+---
+
 ## 🚀 Instalação em 1 Clique (Zero Dependências)
 
 Instale direto no seu agente via [skills.sh](https://skills.sh):
@@ -76,7 +89,7 @@ Compatível nativamente com:
 
 ## 💬 Como Usar (100% Vibe Coding)
 
-Sem flags chatas. Sem menus de configuração obrigatórios. Basta invocar no chat do seu agente usando `/tribunal` ou `/stf`:
+Sem flags chatas nem menus de configuração obrigatórios. Basta invocar no chat do seu agente usando `/tribunal` ou `/stf`:
 
 ### 1. Julgar um Código ou Arquitetura
 ```text
@@ -96,9 +109,16 @@ Sem flags chatas. Sem menus de configuração obrigatórios. Basta invocar no ch
 ```
 
 ### 4. Modo "Corte Marcial" (Auditoria Implacável / Hardcore)
-Para quando você precisa que o modelo use 100% da sua força bruta de raciocínio:
+Para quando você precisa que o modelo use 100% da sua força bruta de raciocínio (Opus, Astra, Argon):
 ```text
 /stf --fogo "Revise a migração do banco de dados de produção antes do deploy"
+# Sinônimos aceitos: --fogo, --hard, --corte-marcial, --xandao
+```
+
+### 5. Modo "Plenário" (Debate Completo dos Modelos)
+Para ver as sustentações da Defesa e da Acusação na íntegra antes da decisão:
+```text
+/stf --plenario "Análise arquitetural da nossa transição para micro-serviços"
 ```
 
 ---
