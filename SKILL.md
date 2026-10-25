@@ -1,11 +1,11 @@
 ---
-name: stf-ia
-description: Adversarial multi-model cross-review court (2 rounds: Defense vs Prosecution -> Magistrate). Eliminates AI sycophancy, stress-tests architecture, and delivers decisive verdicts on code, business, or PRs. / STF da IA: Corte Suprema de revisão adversarial no terminal. Use when you need a second opinion, stress testing, adversarial review, or invoke with '/stf', '/stf-ia', '/tribunal', 'julgar caso'.
+name: stf-review
+description: Adversarial multi-model cross-review court (2 rounds: Defense vs Prosecution -> Magistrate). Eliminates AI sycophancy, stress-tests architecture, and delivers decisive verdicts on code, business, or PRs. / STF Review: Corte Suprema de revisão adversarial no terminal. Use when you need a second opinion, stress testing, adversarial review, or invoke with '/stf', '/stf-review', '/tribunal', 'julgar caso'.
 category: devops
-tags: [stf, stf-ia, tribunal, cross-review, adversarial, multi-model, second-opinion, code-review, sycophancy, decision-making, ultra-think]
+tags: [stf, stf-review, tribunal, cross-review, adversarial, multi-model, second-opinion, code-review, sycophancy, decision-making, ultra-think]
 ---
 
-# 🏛️ STF-IA: O Tribunal da IA (`/stf` | `/tribunal`)
+# 🏛️ STF-Review: O Tribunal da IA (`/stf` | `/tribunal`)
 > **A Primeira Corte Suprema de Inteligência Artificial no seu Terminal.**  
 > *(Supreme Terminal Framework / Supremo Tribunal Frontend)*  
 > Elimine o vício das IAs que dizem "sim" para tudo. Submeta qualquer código, ideia de negócio, roteiro ou decisão crítica a 3 modelos concorrentes em julgamento dialético real em 2 rodadas.

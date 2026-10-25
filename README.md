@@ -1,14 +1,14 @@
-# 🏛️ STF-IA: O Tribunal da IA (`/tribunal` | `/stf`)
+# 🏛️ STF-Review: O Tribunal da IA (`/tribunal` | `/stf`)
 > **A Primeira Corte Suprema de Inteligência Artificial no seu Terminal.**  
 > *(Supreme Terminal Framework / Supremo Tribunal Frontend)*  
 > Elimine a bajulação das IAs. Submeta qualquer código, ideia de negócio, precificação ou roteiro a 3 modelos concorrentes em julgamento dialético real em 2 rodadas.
 
-[![skills.sh compatible](https://img.shields.io/badge/skills.sh-stf--ia-6366f1?style=for-the-badge)](https://skills.sh)
+[![skills.sh compatible](https://img.shields.io/badge/skills.sh-stf--review-6366f1?style=for-the-badge)](https://skills.sh)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![Zero Mutation](https://img.shields.io/badge/Modo-100%25_Read--Only-emerald?style=for-the-badge)](#)
 [![Vibe Coding Ready](https://img.shields.io/badge/Vibe_Coding-Zero_Config-ff0055?style=for-the-badge)](#)
-[![CI & Test Suite](https://github.com/Gabrielrtads/stf-ia/actions/workflows/ci.yml/badge.svg)](https://github.com/Gabrielrtads/stf-ia/actions)
-[![GitHub stars](https://img.shields.io/github/stars/Gabrielrtads/stf-ia?style=social)](https://github.com/Gabrielrtads/stf-ia/stargazers)
+[![CI & Test Suite](https://github.com/Gabrielrtads/stf-review/actions/workflows/ci.yml/badge.svg)](https://github.com/Gabrielrtads/stf-review/actions)
+[![GitHub stars](https://img.shields.io/github/stars/Gabrielrtads/stf-review?style=social)](https://github.com/Gabrielrtads/stf-review/stargazers)
 
 ---
 
@@ -60,7 +60,7 @@ flowchart TD
 
 ## 🎚️ Escala de Gravidade dos Laudos (Tiers de Severidade)
 
-O **STF-IA** prioriza a **utilidade técnica imediata**. A análise é limpa, cirúrgica e sem rodeios para não atrapalhar seu fluxo de desenvolvimento:
+O **STF-Review** prioriza a **utilidade técnica imediata**. A análise é limpa, cirúrgica e sem rodeios para não atrapalhar seu fluxo de desenvolvimento:
 
 | Nível | Status Técnico | Carimbo Oficial | Entrega do Laudo |
 |:---:|---|---|---|
@@ -76,7 +76,7 @@ O **STF-IA** prioriza a **utilidade técnica imediata**. A análise é limpa, ci
 Instale direto no seu agente via [skills.sh](https://skills.sh):
 
 ```bash
-npx skills add Gabrielrtads/stf-ia
+npx skills add Gabrielrtads/stf-review
 ```
 
 Compatível nativamente com:
