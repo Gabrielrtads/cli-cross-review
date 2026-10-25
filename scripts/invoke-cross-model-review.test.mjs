@@ -63,7 +63,7 @@ function ambiente() {
     return { codigo: r.status, saida: r.stdout + r.stderr, chamadas };
   };
 
-  return { dir, rodar };
+  return { dir, rodar, falsos, log };
 }
 
 test("revisao cruzada com claude dispara modelos balanceados (medium padrao) com sonnet espelhado", () => {
@@ -137,4 +137,25 @@ test("modo auto faz triagem inteligente: seleciona high para supabase e low para
   assert.equal(rLow.codigo, 0, rLow.saida);
   assert.match(rLow.chamadas, /--model haiku-4\.5/);
   assert.doesNotMatch(rLow.chamadas, /--model opus-5/);
+});
+
+test("tribunal v2: executa 2 rodadas causais (Defesa + Acusacao na R1, Magistrado na R2)", () => {
+  const a = ambiente();
+  const r = a.rodar("claude", "Auditoria de pricing e monetizacao saas");
+  assert.equal(r.codigo, 0, r.saida);
+  assert.match(r.chamadas, /ADVOGADO DE DEFESA/);
+  assert.match(r.chamadas, /PROMOTOR DE JUST/);
+  assert.match(r.chamadas, /MAGISTRADO SUPREMO/);
+});
+
+test("tribunal alias: invoke-tribunal.ps1 despacha com sucesso", () => {
+  const a = ambiente();
+  const tribScript = path.join(path.dirname(SCRIPT), "invoke-tribunal.ps1");
+  const env = { ...process.env, PATH: [a.falsos, ...PATH_BASE].join(";"), FAKE_LOG: a.log };
+  const r = spawnSync(
+    "pwsh",
+    ["-NoProfile", "-NonInteractive", "-File", tribScript, "-Engine", "claude", "-Prompt", "Roteiro de video e copy viral", "-WorkingDirectory", a.dir, "-Json"],
+    { env, encoding: "utf8" }
+  );
+  assert.equal(r.status, 0, r.stdout + r.stderr);
 });
