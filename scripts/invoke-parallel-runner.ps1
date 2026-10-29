@@ -32,7 +32,12 @@ if ([int]($env:SWARM_DEPTH -as [int]) -ge 1) {
 function Get-ExecutableCommand {
     param([string]$Name)
 
-    $command = Get-Command $Name -CommandType Application,ExternalScript -All -ErrorAction Stop | Select-Object -First 1
+    # ArgumentList nao protege argumentos quando o Windows inicia um shim batch.
+    $command = Get-Command $Name -CommandType Application,ExternalScript -All -ErrorAction Stop |
+        Where-Object { $_.Source -notmatch '\.(cmd|bat)$' } | Select-Object -First 1
+    if (-not $command) {
+        throw "CLI '$Name': shims .cmd/.bat recusados; instale um executavel nativo ou wrapper .ps1."
+    }
     if (-not $command.Source) {
         throw "CLI '$Name' nao possui um caminho executavel resolvido no PATH."
     }
@@ -142,6 +147,8 @@ $idsDasTarefas = @(for ($i = 0; $i -lt $parsedTasks.Count; $i++) {
 $repetidos = @($idsDasTarefas | Group-Object | Where-Object Count -gt 1 | ForEach-Object Name)
 if ($repetidos.Count -gt 0) { throw "Ids de tarefa repetidos no manifesto: $($repetidos -join ', '). Cada tarefa precisa de um id unico." }
 # Valida o manifesto inteiro antes de criar qualquer worktree: tarefa invalida nao deixa mesa orfa.
+$cliCommands = @{}
+$pwshCommand = $null
 for ($i = 0; $i -lt $parsedTasks.Count; $i++) {
     $t = $parsedTasks[$i]; $id = $idsDasTarefas[$i]
     $motor = if ($t.ContainsKey('engine') -and $t['engine']) { [string]$t['engine'] } else { $Engine }
@@ -154,6 +161,12 @@ for ($i = 0; $i -lt $parsedTasks.Count; $i++) {
     if ($esforco -and $esforco -notin @('low', 'medium', 'high', 'xhigh', 'max')) { throw "Tarefa '$id': effort invalido '$esforco'." }
     if ($limite -lt 1 -or $limite -gt 7200) { throw "Tarefa '$id': timeout_seconds fora de 1..7200." }
     if (-not ($t.ContainsKey('prompt') -and $t['prompt'])) { throw "Tarefa '$id' nao possui 'prompt'." }
+    if (-not $cliCommands.ContainsKey($motor)) {
+        $cliCommands[$motor] = Get-ExecutableCommand -Name $motor
+        if ($cliCommands[$motor].Source -match '\.ps1$' -and -not $pwshCommand) {
+            $pwshCommand = Get-ExecutableCommand -Name 'pwsh'
+        }
+    }
 }
 
 $activeJobs = [System.Collections.Generic.List[PSCustomObject]]::new()
@@ -222,14 +235,13 @@ foreach ($task in $parsedTasks) {
     }
 
     # Montar argumentos do motor
-    $cliCommand = Get-ExecutableCommand -Name $taskEngine
+    $cliCommand = $cliCommands[$taskEngine]
     $arguments = [System.Collections.Generic.List[string]]::new()
-    $promptViaStdin = $false
+    $promptViaStdin = $true
 
     switch ($taskEngine) {
         'claude' {
             [void]$arguments.Add('-p')
-            [void]$arguments.Add($taskPrompt)
             [void]$arguments.Add('--permission-prompts')
             [void]$arguments.Add('none')
             if ($taskMode -eq 'plan') {
@@ -292,8 +304,7 @@ foreach ($task in $parsedTasks) {
         }
 
         'agy' {
-            [void]$arguments.Add('--print')
-            [void]$arguments.Add($taskPrompt)
+            # Stdin redirecionado ativa print mode; --print exige um prompt em argv.
             [void]$arguments.Add('--mode')
             [void]$arguments.Add($(if ($taskMode -eq 'plan') { 'plan' } else { 'accept-edits' }))
             [void]$arguments.Add('--print-timeout')
@@ -323,12 +334,12 @@ foreach ($task in $parsedTasks) {
     $psi.CreateNoWindow = $true
     $psi.WorkingDirectory = $assignedDir
     $psi.RedirectStandardInput = $true
+    $psi.StandardInputEncoding = [System.Text.UTF8Encoding]::new($false)
     $psi.RedirectStandardOutput = $true
     $psi.RedirectStandardError = $true
 
     if ($cliCommand.Source -match '\.ps1$') {
-        $pwsh = Get-ExecutableCommand -Name 'pwsh'
-        $psi.FileName = $pwsh.Source
+        $psi.FileName = $pwshCommand.Source
         $launcherArguments = @('-NoProfile', '-NonInteractive', '-File', $cliCommand.Source)
     } else {
         $psi.FileName = $cliCommand.Source
@@ -365,6 +376,8 @@ foreach ($task in $parsedTasks) {
         TimeoutSeconds   = $taskTimeout
         ProcessStartInfo = $psi
         Process          = $null
+        StdinTask        = $null
+        StdinError       = $null
         StdoutTask       = $null
         StderrTask       = $null
         StartTime        = $null
@@ -396,18 +409,20 @@ function Start-JobProcess {
         return $false
     }
 
-    if ($Job.PromptViaStdin) {
-        $proc.StandardInput.Write($Job.Prompt)
-    }
-
-    # Fechamento IMEDIATO de Stdin: Contrato universal anti-deadlock
-    $proc.StandardInput.Close()
-
     $Job.Process = $proc
     $Job.StartTime = [DateTime]::UtcNow
     $Job.Status = 'running'
+
+    # Drenar saida e enviar UTF-8 sem bloquear o watchdog durante prompts grandes.
     $Job.StdoutTask = $proc.StandardOutput.ReadToEndAsync()
     $Job.StderrTask = $proc.StandardError.ReadToEndAsync()
+    if ($Job.PromptViaStdin) {
+        $promptBytes = $Job.ProcessStartInfo.StandardInputEncoding.GetBytes($Job.Prompt)
+        $Job.StdinTask = $proc.StandardInput.BaseStream.WriteAsync($promptBytes, 0, $promptBytes.Length)
+    } else {
+        $proc.StandardInput.Close()
+    }
+
     return $true
 }
 
@@ -449,12 +464,27 @@ while ($true) {
     $stillRunning = 0
     foreach ($job in $activeJobs) {
         if ($job.Status -eq 'running') {
+            if ($job.StdinTask -and $job.StdinTask.IsCompleted) {
+                try {
+                    [void]$job.StdinTask.GetAwaiter().GetResult()
+                    $job.Process.StandardInput.Close() # EOF so apos enviar o prompt inteiro.
+                } catch {
+                    $job.StdinError = "Falha ao enviar o prompt por stdin."
+                    try { $job.Process.Kill($true) } catch { try { $job.Process.Kill() } catch {} }
+                }
+                $job.StdinTask = $null
+            }
             if ($job.Process.HasExited) {
                 $job.EndTime = [DateTime]::UtcNow
                 $job.DurationSeconds = [math]::Round(($job.EndTime - $job.StartTime).TotalSeconds, 2)
                 $job.ExitCode = $job.Process.ExitCode
                 $job.Stdout = $job.StdoutTask.GetAwaiter().GetResult()
                 $job.Stderr = $job.StderrTask.GetAwaiter().GetResult()
+                if ($job.StdinTask) { $job.StdinError = "CLI encerrou antes de receber o prompt inteiro." }
+                if ($job.StdinError) {
+                    $job.Stderr = "$($job.StdinError)`n$($job.Stderr)"
+                    if ($job.ExitCode -eq 0) { $job.ExitCode = 1 }
+                }
 
                 # Tentar converter stdout para JSON estruturado
                 if ($job.Stdout) {

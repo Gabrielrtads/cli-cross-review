@@ -32,8 +32,21 @@ jobs:
       - name: Run PowerShell & Node.js Test Suite
         shell: pwsh
         run: |
-          node scripts/invoke-cross-model-review.test.mjs
+          node --test scripts/invoke-cross-model-review.test.mjs scripts/invoke-parallel-runner.test.mjs
 
       - name: Verify Python Tribunal Runner
         run: |
           python scripts/tribunal_runner.py --help
+
+  bash-test:
+    name: Run Bash Runner Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verify Bash dependencies
+        run: command -v bash && command -v jq && command -v timeout
+      - name: Run Bash regression tests
+        run: node --test scripts/invoke-parallel-runner.test.mjs
