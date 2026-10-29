@@ -177,7 +177,11 @@ if [[ "$OUTPUT_JSON" -eq 1 ]]; then
     T_ST=$( [[ "$T_EXIT" -eq 0 ]] && echo "success" || echo "failed" )
     [[ "$T_EXIT" -eq 124 ]] && T_ST="timeout"
     
-    [[ "$T_ST" == "success" ]] && ((SUCCESSES++)) || ((FAILURES++))
+    if [[ "$T_ST" == "success" ]]; then
+      SUCCESSES=$((SUCCESSES+1))
+    else
+      FAILURES=$((FAILURES+1))
+    fi
     
     OUT_CONTENT=$(jq -s -R '.' "$TMP_DIR/${T_ID}.out" 2>/dev/null || echo '""')
     ERR_CONTENT=$(jq -s -R '.' "$TMP_DIR/${T_ID}.err" 2>/dev/null || echo '""')
@@ -204,9 +208,16 @@ else
     T_ST="failed"
     [[ "$T_EXIT" -eq 0 ]] && T_ST="success"
     [[ "$T_EXIT" -eq 124 ]] && T_ST="timeout"
+
+    if [[ "$T_ST" == "success" ]]; then
+      SUCCESSES=$((SUCCESSES+1))
+    else
+      FAILURES=$((FAILURES+1))
+    fi
     
     echo "[$T_ST] ID: $T_ID | Motor: ${ENGINES[$i]} (${MODES[$i]}) | Duração: ${T_DUR}s"
   done
+  echo "Sucessos: $SUCCESSES | Falhas: $FAILURES"
   echo "================================================================"
 fi
 
